@@ -1,0 +1,20 @@
+# https://hub.docker.com/r/jetbrains/youtrack/
+
+version: '3'
+  services:
+    youtrack:
+      # image: jetbrains/youtrack:2023.2.20316
+      image: jetbrains/youtrack:latest
+      container_name: youtrack
+      volumes:
+        - /srv/youtrack/data:/opt/youtrack/data
+        - /srv/youtrack/conf:/opt/youtrack/conf
+        - /srv/youtrack/logs:/opt/youtrack/logs
+        - /srv/youtrack/backups:/opt/youtrack/backups
+      networks:
+        - jnet
+      ports:
+        - 8080:8080
+networks:
+  jnet:
+    external: true
